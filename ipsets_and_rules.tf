@@ -4,7 +4,7 @@ data "template_file" "waf-ipsets-and-rules" {
 
   variables {
     name = "${var.name}"
-    metric_name = "${replace(var.name, /[^A-Za-z0-9]/, "")}"
+    metric_name = "${replace(var.name, "/[^A-Za-z0-9]/", "")}"
   }
 }
 
