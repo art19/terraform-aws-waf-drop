@@ -17,8 +17,8 @@ resource "aws_cloudwatch_event_target" "lambda" {
     { "url": "https://www.spamhaus.org/drop/edrop.txt" }
   ],
   "ipSetIds": [
-    "${aws_cloudformation_stack.waf-ipsets-and-rules.outputs.WAFIPSet1}",
-    "${aws_cloudformation_stack.waf-ipsets-and-rules.outputs.WAFIPSet2}"
+    "${aws_cloudformation_stack.waf-ipsets-and-rules.outputs["WAFIPSet1"]}",
+    "${aws_cloudformation_stack.waf-ipsets-and-rules.outputs["WAFIPSet2"]}"
   ]
 }
 EOF
