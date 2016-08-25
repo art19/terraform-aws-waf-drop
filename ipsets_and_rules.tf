@@ -2,7 +2,7 @@
 data "template_file" "waf-ipsets-and-rules" {
   template = "${file("${path.module}/templates/ipsets_and_rules_cftemplate.json.tpl")}"
 
-  variables {
+  vars {
     name = "${var.name}"
     metric_name = "${replace(var.name, "/[^A-Za-z0-9]/", "")}"
   }
