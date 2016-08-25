@@ -35,8 +35,8 @@ data "aws_iam_policy_document" "lambda-role-policy" {
     effect    = "Allow"
     actions   = ["waf:GetIPSet", "waf:UpdateIPSet"]
     resources = [
-      "arn:aws:waf::${data.aws_caller_identity.current.account_id}:ipset/${aws_cloudformation_stack.waf-ipsets-and-rules.outputs.WAFIPSet1}",
-      "arn:aws:waf::${data.aws_caller_identity.current.account_id}:ipset/${aws_cloudformation_stack.waf-ipsets-and-rules.outputs.WAFIPSet2}"
+      "arn:aws:waf::${data.aws_caller_identity.current.account_id}:ipset/${aws_cloudformation_stack.waf-ipsets-and-rules.outputs["WAFIPSet1"]}",
+      "arn:aws:waf::${data.aws_caller_identity.current.account_id}:ipset/${aws_cloudformation_stack.waf-ipsets-and-rules.outputs["WAFIPSet2"]}"
     ]
   }
 }
