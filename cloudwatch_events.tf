@@ -7,7 +7,7 @@ resource "aws_cloudwatch_event_rule" "waf" {
 
 # Make the Lambda function the target of the CloudWatch event rule
 resource "aws_cloudwatch_event_target" "lambda" {
-  rule = "${aws_cloudwatch_event_rule.waf.arn}"
+  rule = "${aws_cloudwatch_event_rule.waf.name}"
   arn  = "${aws_lambda_function.waf.arn}"
 
   input = <<EOF
