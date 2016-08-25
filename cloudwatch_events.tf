@@ -23,6 +23,7 @@ EOF
 
 # Grant CloudWatch Events the ability to execute the Lambda function.
 resource "aws_lambda_permission" "cloudwatch-events" {
+  statement_id  = "${var.function_name}_cwevents_invokefunction"
   action        = "lambda:InvokeFunction"
   function_name = "${aws_lambda_function.waf.arn}"
   principal     = "events.amazonaws.com"
