@@ -1,5 +1,5 @@
 # Policy granting Lambda the ability to assume the role we're creating
-data "iam_policy_document" "lambda-assume-role-policy" {
+data "aws_iam_policy_document" "lambda-assume-role-policy" {
   statement {
     effect = "Allow"
     actions = ["sts:AssumeRole"]
@@ -12,7 +12,7 @@ data "iam_policy_document" "lambda-assume-role-policy" {
 }
 
 # Policy attached to the IAM role we're creating
-data "iam_policy_document" "lambda-role-policy" {
+data "aws_iam_policy_document" "lambda-role-policy" {
   # Permit the Lambda function to write to CloudWatch Logs
   statement {
     sid       = "AllowCloudWatchLogs"
@@ -43,11 +43,11 @@ data "iam_policy_document" "lambda-role-policy" {
 
 resource "aws_iam_role" "lambda" {
   name_prefix        = "aws_waf_drop_updater_"
-  assume_role_policy = "${data.iam_policy_document.lambda-assume-role-policy.json}"
+  assume_role_policy = "${data.aws_iam_policy_document.lambda-assume-role-policy.json}"
 }
 
 resource "aws_iam_role_policy" "lambda" {
   name   = "aws_waf_drop_updater_lambda_policy"
   role   = "${aws_iam_role.lambda.arn}"
-  policy = "${data.iam_policy_document.lambda-role-policy.json}"
+  policy = "${data.aws_iam_policy_document.lambda-role-policy.json}"
 }
