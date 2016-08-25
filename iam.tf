@@ -48,6 +48,6 @@ resource "aws_iam_role" "lambda" {
 
 resource "aws_iam_role_policy" "lambda" {
   name   = "aws_waf_drop_updater_lambda_policy"
-  role   = "${aws_iam_role.lambda.arn}"
+  role   = "${aws_iam_role.lambda.id}"
   policy = "${data.aws_iam_policy_document.lambda-role-policy.json}"
 }
