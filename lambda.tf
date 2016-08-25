@@ -4,7 +4,7 @@ resource "aws_lambda_function" "waf" {
 
   role          = "${aws_iam_role.lambda.arn}"
 
-  function_name = "${var.function_name}"
+  function_name = "${lower(replace(var.name, "-", "_"))}_update_waf_drop_list"
   description   = "Updates AWS WAF IPSets with the latest IPs from Spamhaus DROP and EDROP lists."
   handler       = "index.handler"
 
