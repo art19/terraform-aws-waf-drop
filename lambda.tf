@@ -1,6 +1,6 @@
 resource "aws_lambda_function" "waf" {
-  s3_bucket     = "awswaf.us-east-1"
-  s3_key        = "waf-reputation-lists/lambda.zip"
+  s3_bucket     = "${var.lambda_function_bucket}"
+  s3_key        = "${var.lambda_function_key}"
 
   role          = "${aws_iam_role.lambda.arn}"
 
