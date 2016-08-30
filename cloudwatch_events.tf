@@ -12,6 +12,8 @@ resource "aws_cloudwatch_event_target" "lambda" {
 
   input = <<EOF
 {
+  "maxDescriptorsPerIpSet": ${var.max_descriptors_per_ip_set},
+  "maxDescriptorsPerIpSetUpdate": ${var.max_descriptors_per_ip_set_update},
   "lists": [
     { "url": "https://www.spamhaus.org/drop/drop.txt" },
     { "url": "https://www.spamhaus.org/drop/edrop.txt" }
