@@ -1,4 +1,6 @@
 resource "aws_lambda_function" "waf" {
+  provider = "aws.terraform-aws-waf-drop"
+
   s3_bucket     = "${var.lambda_function_bucket}"
   s3_key        = "${var.lambda_function_key}"
 

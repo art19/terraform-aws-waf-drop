@@ -42,11 +42,15 @@ data "aws_iam_policy_document" "lambda-role-policy" {
 }
 
 resource "aws_iam_role" "lambda" {
+  provider = "aws.terraform-aws-waf-drop"
+
   name_prefix        = "aws_waf_drop_updater_"
   assume_role_policy = "${data.aws_iam_policy_document.lambda-assume-role-policy.json}"
 }
 
 resource "aws_iam_role_policy" "lambda" {
+  provider = "aws.terraform-aws-waf-drop"
+
   name   = "aws_waf_drop_updater_lambda_policy"
   role   = "${aws_iam_role.lambda.id}"
   policy = "${data.aws_iam_policy_document.lambda-role-policy.json}"

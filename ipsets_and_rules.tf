@@ -10,6 +10,8 @@ data "template_file" "waf-ipsets-and-rules" {
 
 # Create IPSets and rules. Since Terraform does not support WAF right now, do this via CloudFormation.
 resource "aws_cloudformation_stack" "waf-ipsets-and-rules" {
+  provider = "aws.terraform-aws-waf-drop"
+
   name = "${var.name}-waf-drop-ipsets-and-rules"
   template_body = "${data.template_file.waf-ipsets-and-rules.rendered}"
 
